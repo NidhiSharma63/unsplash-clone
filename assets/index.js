@@ -24,6 +24,7 @@ function loadImage() {
 }
 window.onload=loadImage()
 function getimage() {
+    imageContainer.innerHTML='';
   (url =
     "https://api.unsplash.com/search/photos?query=" +
     input.value +
