@@ -1,6 +1,6 @@
 
 function getimage() {
-    url = 'https://api.unsplash.com/search/photos?query=' + input.value + '&per_page=30&client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8',
+    url = 'https://api.unsplash.com/search/photos?query=' + input.value + '&per_page=130&client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8',
         fetch(url).then((response) => {
             return response.json()
         }).then((data) => {
@@ -16,3 +16,4 @@ function getimage() {
             });
         })
 }
+document.getElementById("btn").addEventListener("click",getimage)

@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/index.css">
+    <link rel="stylesheet" href="./assets/mycss.css">
     <title>Document</title>
 </head>
 
-<body>
-    <nav class="nav">
-        <div>search unsplash images</div>
-        <div> 
-            <input type="text" id="input">
-            <button id="btn" onclick="getimage()">search</button>
+<body class="bg-black text-white">
+    <nav class="nav border-2 border-white flex justify-around align-middle font-sans p-2 bg-amber-600">
+        <div class="logo text-2xl font-extrabold">search unsplash images</div>
+        <div class="search-input"> 
+            <input type="text" id="input" class="text-black h-8 pl-2 focus:outline-none rounded-sm">
+            <button id="btn" class="text-lg text-orange-500 font-semibold bg-white px-4 py-1 rounded-sm bg-orange-500 hover:bg-orange-200 ml-3">search</button>
         </div>
     </nav>
-
-    <div class="imageContainer"></div>
+    <div class="imageContainer grid gap-4 mt-10 "></div>
 </body>
 <script src="./assets/index.js"></script>
 
