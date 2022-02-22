@@ -1,2 +1,0 @@
-"https://api.unsplash.com/search/photos/?query='+input.value+'&per_page=20&client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8"
-'https://api.unsplash.com/search/photos?query='+input.value+'&per_page=30&client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8'
