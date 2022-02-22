@@ -1,6 +1,7 @@
 // console.log()
 let imageContainer = document.querySelector(".imageContainer");
 let imgShowed = document.querySelector(".imgShowed");
+let container = document.querySelector(".container")
 const imageArr = [
   "./assets/images/img1.jpeg",
   "./assets/images/img2.jpeg",
@@ -22,6 +23,7 @@ function loadImage() {
     Div.appendChild(imgtag);
     imageContainer.appendChild(Div);
   }
+  imagepopup()
 }
 window.onload = loadImage();
 function getimage() {
@@ -29,7 +31,7 @@ function getimage() {
   (url =
     "https://api.unsplash.com/search/photos?query=" +
     input.value +
-    "&per_page=20&client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8"),
+    "&per_page=1200&client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8"),
     fetch(url)
       .then((response) => {
         return response.json();
@@ -43,17 +45,21 @@ function getimage() {
           img.src = `${element.urls.regular}`;
           Div.appendChild(img);
           document.querySelector(".imageContainer").appendChild(Div);
-          let imgDiv = document.querySelectorAll(".imgDiv");
-          imgDiv.forEach(element => {
-            element.addEventListener("click",(e)=>{
-              let target = e.currentTarget
-              let clickedimagesrc = target.firstChild.src
-              imgShowed.innerHTML=`<img src="${clickedimagesrc}" class="imgfit" alt="...">`
-              // <img src="..." class="img-fluid" alt="...">
-             
-            })
-          });
+          imagepopup()
         });
       });
 }
 document.getElementById("btn").addEventListener("click", getimage);
+
+function imagepopup(){
+  let imgDiv = document.querySelectorAll(".imgDiv");
+  imgDiv.forEach(element => {
+    element.addEventListener("click",(e)=>{
+      container.style.display="block"
+      let target = e.currentTarget
+      let clickedimagesrc = target.firstChild.src
+      imgShowed.innerHTML=`<img src="${clickedimagesrc}" class="imgfit" alt="...">`
+     
+    })
+  });
+}
