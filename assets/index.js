@@ -1,7 +1,8 @@
 // console.log()
 let imageContainer = document.querySelector(".imageContainer");
 let imgShowed = document.querySelector(".imgShowed");
-let container = document.querySelector(".container")
+let container = document.querySelector(".container");
+let crossIcon = document.querySelector(".crossIcon")
 const imageArr = [
   "./assets/images/img1.jpeg",
   "./assets/images/img2.jpeg",
@@ -37,8 +38,8 @@ function getimage() {
         return response.json();
       })
       .then((data) => {
+        console.log(data)
         data.results.forEach((element) => {
-          let srorce = element.urls.regular;
           let Div = document.createElement("Div");
           Div.setAttribute("class", "imgDiv");
           let img = document.createElement("img");
@@ -59,7 +60,9 @@ function imagepopup(){
       let target = e.currentTarget
       let clickedimagesrc = target.firstChild.src
       imgShowed.innerHTML=`<img src="${clickedimagesrc}" class="imgfit" alt="...">`
-     
     })
   });
 }
+crossIcon.addEventListener("click",()=>{
+  container.style.display="none"
+})
