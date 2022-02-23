@@ -32,13 +32,10 @@ function fetchSearchImage(URL) {
     .then((data) => {
       console.log(data);
       data.results.forEach((element) => {
-        let Div = document.createElement("Div");
-        Div.setAttribute("class", "imgDiv");
-        Div.setAttribute("data-downloadurl", `${element.links.download}`);
         let img = document.createElement("img");
+        img.className="image-gallery"
         img.src = `${element.urls.regular}`;
-        Div.appendChild(img);
-        document.querySelector(".imageContainer").appendChild(Div);
+        document.querySelector(".imageContainer").appendChild(img);
         imagepopup();
         downloadIcon.addEventListener("click", () => {
           window.open(`${element.links.download}`, '_blank')
@@ -56,13 +53,10 @@ function fetchHomeImage(URL) {
     })
     .then((data) => {
       data.forEach((element) => {
-        let Div = document.createElement("Div");
-        Div.setAttribute("class", "imgDiv");
-        Div.setAttribute("data-downloadurl", `${element.links.download}`);
         let img = document.createElement("img");
+        img.className="image-gallery"
         img.src = `${element.urls.regular}`;
-        Div.appendChild(img);
-        document.querySelector(".imageContainer").appendChild(Div);
+        document.querySelector(".imageContainer").appendChild(img);
         imagepopup();
         downloadIcon.addEventListener("click", () => {
           window.open(`${element.links.download}`, '_blank')
