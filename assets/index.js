@@ -1,9 +1,10 @@
 // console.log()
-let imageContainer = document.querySelector(".imageContainer");
-let imgShowed = document.querySelector(".imgShowed");
-let container = document.querySelector(".container");
-let crossIcon = document.querySelector(".crossIcon");
-let downloadIcon = document.querySelector(".downloadIcon")
+const imageContainer = document.querySelector(".imageContainer");
+const imgShowed = document.querySelector(".imgShowed");
+const container = document.querySelector(".container");
+const crossIcon = document.querySelector(".crossIcon");
+const downloadIcon = document.querySelector(".downloadIcon");
+const logo = document.querySelector(".logo");
 function loadImage() {
   (url =
     "https://api.unsplash.com/photos/?client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8"),
@@ -26,7 +27,11 @@ function loadImage() {
       });
 }
 window.onload = loadImage();
-
+logo.addEventListener("click",()=>{
+  input.value=''
+  imageContainer.innerHTML = "";
+  loadImage();
+})
 
 // function to fetch image
 function getimage() {
