@@ -2,31 +2,33 @@
 let imageContainer = document.querySelector(".imageContainer");
 let imgShowed = document.querySelector(".imgShowed");
 let container = document.querySelector(".container");
-let crossIcon = document.querySelector(".crossIcon")
-const imageArr = [
-  "./assets/images/img1.jpeg",
-  "./assets/images/img2.jpeg",
-  "./assets/images/img3.jpeg",
-  "./assets/images/img4.jpeg",
-  "./assets/images/img5.jpeg",
-  "./assets/images/img6.jpeg",
-  "./assets/images/img7.jpeg",
-  "./assets/images/img8.jpeg",
-  "./assets/images/img9.jpeg",
-  "./assets/images/img10.jpeg",
-];
+let crossIcon = document.querySelector(".crossIcon");
+let downloadIcon = document.querySelector(".downloadIcon")
 function loadImage() {
-  for (let i = 0; i < imageArr.length; i++) {
-    let Div = document.createElement("div");
-    Div.setAttribute("class", "imgDiv");
-    let imgtag = document.createElement("img");
-    imgtag.src = imageArr[i];
-    Div.appendChild(imgtag);
-    imageContainer.appendChild(Div);
-  }
-  imagepopup()
+  (url =
+    "https://api.unsplash.com/photos/?client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8"),
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data)
+        data.forEach((element) => {
+          let Div = document.createElement("Div");
+          Div.setAttribute("class", "imgDiv");
+          Div.setAttribute("data-downloadurl", `${element.links.download}`);
+          let img = document.createElement("img");
+          img.src = `${element.urls.regular}`;
+          Div.appendChild(img);
+          document.querySelector(".imageContainer").appendChild(Div);
+          imagepopup()
+        });
+      });
 }
 window.onload = loadImage();
+
+
+// function to fetch image
 function getimage() {
   imageContainer.innerHTML = "";
   (url =
@@ -38,10 +40,11 @@ function getimage() {
         return response.json();
       })
       .then((data) => {
-        console.log(data)
+    
         data.results.forEach((element) => {
           let Div = document.createElement("Div");
           Div.setAttribute("class", "imgDiv");
+          Div.setAttribute("data-downloadurl", `${element.links.download}`);
           let img = document.createElement("img");
           img.src = `${element.urls.regular}`;
           Div.appendChild(img);
@@ -52,6 +55,7 @@ function getimage() {
 }
 document.getElementById("btn").addEventListener("click", getimage);
 
+// image popup function
 function imagepopup(){
   let imgDiv = document.querySelectorAll(".imgDiv");
   imgDiv.forEach(element => {
@@ -60,9 +64,22 @@ function imagepopup(){
       let target = e.currentTarget
       let clickedimagesrc = target.firstChild.src
       imgShowed.innerHTML=`<img src="${clickedimagesrc}" class="imgfit" alt="...">`
+      downloadIcon.addEventListener("click",()=>{
+        let url=target.dataset.downloadurl
+        downloadIMG(url)
+      })
     })
   });
 }
+// cross icon 
 crossIcon.addEventListener("click",()=>{
   container.style.display="none"
-})
+});
+
+function downloadIMG(){
+  const link = document.createElement('a');
+  link.style.display = 'none';
+    link.href = URL.createObjectURL(url);
+    link.download = file.name;
+    link.click();
+}
