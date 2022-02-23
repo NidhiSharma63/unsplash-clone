@@ -3,7 +3,9 @@
   overflow-y: hidden;
 }
 .nav {
+/* background-color: rgb(14, 13, 13); */
   height: 9vh;
+  box-shadow: 0 -3px 4px 0 rgb(41, 41, 44, 0.2),0 -3px 16px 0 rgb(26, 26, 27,0.2)
 }
 .imageContainer {
   margin-top: 2vh;

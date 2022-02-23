@@ -9,7 +9,7 @@ const logo = document.querySelector(".logo");
 //load home image
 function loadImage() {
   url =
-    "https://api.unsplash.com/photos/?client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8";
+    "https://api.unsplash.com/photos/random?client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8&count=30";
   fetchHomeImage(url);
 }
 
