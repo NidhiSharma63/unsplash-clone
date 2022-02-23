@@ -12,14 +12,6 @@ function loadImage() {
     "https://api.unsplash.com/photos/?client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8";
   fetchHomeImage(url);
 }
-window.onload = loadImage();
-
-// show home page on click logo
-logo.addEventListener("click", () => {
-  input.value = "";
-  imageContainer.innerHTML = "";
-  loadImage();
-});
 
 // function to fetch show search image
 function getimage() {
@@ -29,9 +21,8 @@ function getimage() {
     input.value +
     "&per_page=1200&client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8";
   fetchSearchImage(url);
-}
-document.getElementById("btn").addEventListener("click", getimage);
 
+}
 // function fetch image data
 function fetchSearchImage(URL) {
   fetch(url)
@@ -49,8 +40,12 @@ function fetchSearchImage(URL) {
         Div.appendChild(img);
         document.querySelector(".imageContainer").appendChild(Div);
         imagepopup();
+        downloadIcon.addEventListener("click", () => {
+          window.open(`${element.links.download}`, '_blank')
+        })
       });
     });
+
 }
 
 // function fetch home page image
@@ -60,7 +55,6 @@ function fetchHomeImage(URL) {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       data.forEach((element) => {
         let Div = document.createElement("Div");
         Div.setAttribute("class", "imgDiv");
@@ -70,6 +64,9 @@ function fetchHomeImage(URL) {
         Div.appendChild(img);
         document.querySelector(".imageContainer").appendChild(Div);
         imagepopup();
+        downloadIcon.addEventListener("click", () => {
+          window.open(`${element.links.download}`, '_blank')
+        })
       });
     });
 }
@@ -82,13 +79,20 @@ function imagepopup() {
       let target = e.currentTarget;
       let clickedimagesrc = target.firstChild.src;
       imgShowed.innerHTML = `<img src="${clickedimagesrc}" class="imgfit" alt="...">`;
-      downloadIcon.addEventListener("click", () => {
-        let url = target.dataset.downloadurl;
-        downloadIMG(url);
-      });
     });
   });
 }
+
+window.onload = loadImage();
+
+// show home page on click logo
+logo.addEventListener("click", () => {
+  input.value = "";
+  imageContainer.innerHTML = "";
+  loadImage();
+});
+
+document.getElementById("btn").addEventListener("click", getimage);
 
 // cross icon
 crossIcon.addEventListener("click", () => {
