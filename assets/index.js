@@ -22,6 +22,16 @@ function getimage() {
     "&per_page=1200&client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8";
   fetchSearchImage(url);
 }
+
+// function to get image from url
+function getImage(imgTag,Image) {
+  if(window.innerWidth<=500){
+    imgTag.src = `${Image.urls.thumb}`;
+  }else{
+    imgTag.src = `${Image.urls.regular}`;
+  }
+};
+
 // function fetch image datad 
 function fetchSearchImage(URL) {
   fetch(URL)
@@ -37,13 +47,10 @@ function fetchSearchImage(URL) {
         // addinglistener to window resize to change image size;
 
         window.addEventListener("resize", () => {
-          if(window.innerWidth<=500){
-            console.log(element.urls.thumb);
-            img.src = `${element.urls.thumb}`;
-          }else{
-            img.src = `${element.urls.regular}`;
-          }
+          getImage(img,element);
         });
+
+        getImage(img,element);
         document.querySelector(".imageContainer").appendChild(img);
         imagepopup();
       });
@@ -62,14 +69,15 @@ function fetchHomeImage(URL) {
         console.log(element);
         let img = document.createElement("img");
         img.className="image-gallery";
+
+        // addinglistener to window resize to change image size;
+
         window.addEventListener("resize", () => {
-          if(window.innerWidth<=500){
-            // console.log(element.urls.thumb);
-            img.src = `${element.urls.small}`;
-          }else{
-            img.src = `${element.urls.regular}`;
-          }
+          getImage(img,element);
         });
+        
+        getImage(img,element);
+        
         document.querySelector(".imageContainer").appendChild(img);
         imagepopup();
       });
