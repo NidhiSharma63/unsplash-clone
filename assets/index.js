@@ -26,7 +26,7 @@ function getimage() {
 // function to get image from url
 function getImage(imgTag,Image) {
   if(window.innerWidth<=500){
-    imgTag.src = `${Image.urls.thumb}`;
+    imgTag.src = `${Image.urls.small}`;
   }else{
     imgTag.src = `${Image.urls.regular}`;
   }
@@ -77,7 +77,7 @@ function fetchHomeImage(URL) {
         });
         
         getImage(img,element);
-        
+
         document.querySelector(".imageContainer").appendChild(img);
         imagepopup();
       });
