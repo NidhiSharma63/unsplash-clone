@@ -2,12 +2,20 @@
   height: 100vh;
   overflow-y: hidden;
 }
+.main-container{
+  max-width: 1720px;
+  margin: auto;
+}
 .nav {
-/* background-color: rgb(14, 13, 13); */
-  /* height: 9vh; */
-  height: 70px;
+  padding: 10px 0px;
   background-color: rgb(255, 132, 0) !important;
   box-shadow: 0 -3px 4px 0 rgb(41, 41, 44, 0.2),0 -3px 16px 0 rgb(26, 26, 27,0.2)
+}
+
+nav .logo img{
+  position: relative;
+  width: 71px;
+  margin-top: -17px;
 }
 
 .imageContainer{
@@ -50,6 +58,21 @@
   cursor: pointer;
 }
 
+#input{
+  width: 350px;
+  height: 42px;
+}
+
+#btn2{
+  font-size: 1.3rem;
+  background-color: white;
+  color:rgb(255, 132, 0);
+  padding: 10px;
+  border-radius: 10px;
+  display: none;
+  margin-left: 20px;
+  cursor: pointer;
+}
 
 @media screen and (max-width:800px) {
   .imageContainer{
@@ -60,5 +83,14 @@
 @media screen and (max-width:500px) {
   .imageContainer{
     grid-template-columns: auto;
+  }
+  #input{
+    width: 200px;
+  }
+  .search-btn{
+    display: none;
+  }
+  #btn2{
+    display: inline-grid;
   }
 }

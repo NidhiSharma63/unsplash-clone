@@ -23,15 +23,6 @@ function getimage() {
   fetchSearchImage(url);
 }
 
-// function to get image from url
-function getImage(imgTag,Image) {
-  if(window.innerWidth<=500){
-    imgTag.src = `${Image.urls.small}`;
-  }else{
-    imgTag.src = `${Image.urls.regular}`;
-  }
-};
-
 // function fetch image datad 
 function fetchSearchImage(URL) {
   fetch(URL)
@@ -43,14 +34,7 @@ function fetchSearchImage(URL) {
       data.results.forEach((element) => {
         let img = document.createElement("img");
         img.className="image-gallery";
-
-        // addinglistener to window resize to change image size;
-
-        window.addEventListener("resize", () => {
-          getImage(img,element);
-        });
-
-        getImage(img,element);
+        img.src = `${element.urls.regular}`;
         document.querySelector(".imageContainer").appendChild(img);
         imagepopup();
       });
@@ -69,14 +53,7 @@ function fetchHomeImage(URL) {
         console.log(element);
         let img = document.createElement("img");
         img.className="image-gallery";
-
-        // addinglistener to window resize to change image size;
-
-        window.addEventListener("resize", () => {
-          getImage(img,element);
-        });
-        
-        getImage(img,element);
+        img.src = `${element.urls.regular}`;
 
         document.querySelector(".imageContainer").appendChild(img);
         imagepopup();
@@ -105,7 +82,9 @@ logo.addEventListener("click", () => {
   loadImage();
 });
 
-document.getElementById("btn").addEventListener("click", getimage);
+document.getElementById("btn1").addEventListener("click", getimage);
+document.getElementById("btn2").addEventListener("click", getimage);
+
 
 // cross icon
 crossIcon.addEventListener("click", () => {
