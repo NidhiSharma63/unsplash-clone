@@ -23,9 +23,9 @@ function getimage() {
   fetchSearchImage(url);
 
 }
-// function fetch image data
+// function fetch image datad 
 function fetchSearchImage(URL) {
-  fetch(url)
+  fetch(URL)
     .then((response) => {
       return response.json();
     })
@@ -47,12 +47,13 @@ function fetchSearchImage(URL) {
 
 // function fetch home page image
 function fetchHomeImage(URL) {
-  fetch(url)
+  fetch(URL)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
       data.forEach((element) => {
+        console.log(element);
         let img = document.createElement("img");
         img.className="image-gallery"
         img.src = `${element.urls.regular}`;
