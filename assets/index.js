@@ -21,7 +21,6 @@ function getimage() {
     input.value +
     "&per_page=1200&client_id=5OXcnxdQpZLtAG0_jRNpqEQhTlUOQL3TKviFAUbBKm8";
   fetchSearchImage(url);
-
 }
 // function fetch image datad 
 function fetchSearchImage(URL) {
@@ -33,13 +32,20 @@ function fetchSearchImage(URL) {
       console.log(data);
       data.results.forEach((element) => {
         let img = document.createElement("img");
-        img.className="image-gallery"
-        img.src = `${element.urls.regular}`;
+        img.className="image-gallery";
+
+        // addinglistener to window resize to change image size;
+
+        window.addEventListener("resize", () => {
+          if(window.innerWidth<=500){
+            console.log(element.urls.thumb);
+            img.src = `${element.urls.thumb}`;
+          }else{
+            img.src = `${element.urls.regular}`;
+          }
+        });
         document.querySelector(".imageContainer").appendChild(img);
         imagepopup();
-        downloadIcon.addEventListener("click", () => {
-          window.open(`${element.links.download}`, '_blank')
-        })
       });
     });
 
@@ -55,13 +61,17 @@ function fetchHomeImage(URL) {
       data.forEach((element) => {
         console.log(element);
         let img = document.createElement("img");
-        img.className="image-gallery"
-        img.src = `${element.urls.regular}`;
+        img.className="image-gallery";
+        window.addEventListener("resize", () => {
+          if(window.innerWidth<=500){
+            // console.log(element.urls.thumb);
+            img.src = `${element.urls.small}`;
+          }else{
+            img.src = `${element.urls.regular}`;
+          }
+        });
         document.querySelector(".imageContainer").appendChild(img);
         imagepopup();
-        downloadIcon.addEventListener("click", () => {
-          window.open(`${element.links.download}`, '_blank')
-        })
       });
     });
 }
