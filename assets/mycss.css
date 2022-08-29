@@ -5,10 +5,11 @@
 .main-container{
   max-width: 1720px;
   margin: auto;
+  background-color: white;
 }
 .nav {
   padding: 10px 0px;
-  background-color: rgb(255, 132, 0) !important;
+  background-color: white !important;
   box-shadow: 0 -3px 4px 0 rgb(41, 41, 44, 0.2),0 -3px 16px 0 rgb(26, 26, 27,0.2)
 }
 
@@ -61,12 +62,21 @@ nav .logo img{
 #input{
   width: 350px;
   height: 42px;
+  box-shadow: 0px 0px 10px #738B95;
+  background-color: rgba(255, 255, 255, 0.74);
+  border-radius: 4px;
 }
 
+#btn1{
+  color: white;
+  background-color: #738B95 !important;
+}
 #btn2{
   font-size: 1.3rem;
   background-color: white;
-  color:rgb(255, 132, 0);
+  color:#738B95;
+  box-shadow: 0px 0px 10px rgba(128, 126, 126, 0.952);
+
   padding: 10px;
   border-radius: 10px;
   display: none;
@@ -80,17 +90,33 @@ nav .logo img{
   }
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:700px) {
+  nav .logo img{
+    position: relative;
+    width: 51px;
+    margin-top: -17px;
+  }
   .imageContainer{
     grid-template-columns: auto;
   }
   #input{
-    width: 200px;
+    width: 300px;
   }
   .search-btn{
     display: none;
   }
   #btn2{
     display: inline-grid;
+  }
+}
+
+@media screen and (max-width:500px) {
+  nav .logo img{
+    position: relative;
+    width: 31px;
+    margin-top: 3px;
+  }
+  #input{
+    width: 200px;
   }
 }
