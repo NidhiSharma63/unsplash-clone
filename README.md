@@ -7,4 +7,4 @@
 ### here it's
 <img src='./assets/images/unsplash.png'>
 
-## [search your favourite images here](https://nidhisharma63.github.io/image_website/)
+## [search your favourite images here](https://nidhisharma63.github.io/unsplash-clone/)
